@@ -35,7 +35,13 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
+
+      <v-btn to="/Login-m.vue">Login</v-btn>
+      <v-btn to="/PostCreate-m.vue">PostCreate</v-btn>
+      <v-btn to="/Registration-m.vue">Registration</v-btn>
     </v-app-bar>
+
+
 
     <v-main>
       <router-view/>
