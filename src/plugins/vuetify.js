@@ -10,5 +10,4 @@ const opts = {
         current: 'ja',
     },
 };
-export default new Vuetify(opts
-);
+export default new Vuetify(opts);
