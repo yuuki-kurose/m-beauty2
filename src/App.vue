@@ -1,14 +1,30 @@
 <template>
   <div>
-    <h3>リンク先</h3>
-    <router-link to="/Login-m.vue">ログイン</router-link><br>
-    
-    <router-link to="PostCreate-m.vue">会員登録</router-link><br>
-
-    <router-link to="Registration-m.vue">投稿</router-link><br>
     <router-view></router-view>
-  
     <v-app>
+      <v-form>
+        <v-btn to="/Login-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >Login</v-btn>
+        <v-btn to="/PostCreate-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >PostCreate</v-btn>
+        <v-btn to="Registration-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >Registration</v-btn>
+      </v-form>
     </v-app>
   </div>
 </template>
