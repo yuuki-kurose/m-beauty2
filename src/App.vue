@@ -1,32 +1,41 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div>
+    <router-view></router-view>
+    <v-app>
+      <v-form>
+        <v-btn to="/Login-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >Login</v-btn>
+        <v-btn to="/PostCreate-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >PostCreate</v-btn>
+        <v-btn to="Registration-m.vue"
+          width="150px"
+          color="primary"
+          elevation="2"
+          outlined
+          x-large
+        >Registration</v-btn>
+      </v-form>
+    </v-app>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: 'App',
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    //
+  }),
+};
+</script>
