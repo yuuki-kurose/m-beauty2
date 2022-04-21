@@ -9,5 +9,8 @@ const opts = {
         locales: {ja},
         current: 'ja',
     },
+    icons: {
+        iconfont: 'mdiSvg'
+    }
 };
 export default new Vuetify(opts);

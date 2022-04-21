@@ -6,6 +6,7 @@
       </v-card-title>
         <v-card-text>
           <v-form>
+            <v-icon> {{ svgPath }}</v-icon>
             <v-text-field type="email" v-model="formData.email" label="メールアドレス"></v-text-field>
             <v-text-field type="password" v-model="formData.password" label="パスワード"></v-text-field>
             <v-card-actions> 
@@ -19,37 +20,38 @@
 
 
 <script>
+  import { mdiAccountCircle } from '@mdi/js'
   import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
   import app from '../firebase';
+
   export default {
     data: () => ({
+      // 各コンポーネントにリンク
       links: [
         'Home',
         'Login',
         'PostCreate',
         'Registration',
-        
       ],
+      // フォームデータ定義
       formData: {
         email: '',
         password: ''
-      }
+      },
+      // iconのpath
+      svgPath: mdiAccountCircle
     }),
-    methods: {
-      login(){
-        const auth = getAuth(app);
-        signInWithEmailAndPassword(auth, this.formData.email, this.formData.password)
-        .then((userCredential) => {
-        // const user = userCredential.user;
-        console.log(userCredential);
-      })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      // });
-        console.log(this.formData)
-      }
+    // ログイン機能の設定
+    methods:{
+        login() {
+          const auth = getAuth(app);
+          signInWithEmailAndPassword(auth, this.formData.email, this.formData.password)
+          .then((userCredential) => {
+          // const user = userCredential.user;
+          console.log(userCredential);
+          })
+          console.log(this.formData);
+        }
     }
   }
-
 </script>
