@@ -8,18 +8,19 @@ import Registration from "/src/page/Registration-m.vue"
 Vue.use(VueRouter)
 
 const routes = [
+
   {
-    path: '/src/page/Login-m.vue',
+    path: '/Login-m.vue',
     name: 'Login',
     component: Login
   },
   {
-    path: '/src/page/PostCreate-m.vue',
+    path: '/PostCreate-m.vue',
     name: 'PostCreate',
     component: PostCreate
   },
   {
-    path: '/src/page/Registration-m.vue',
+    path: '/Registration-m.vue',
     name: 'Registration',
     component: Registration
   }
