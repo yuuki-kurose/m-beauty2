@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container>
       <v-row>
         <v-col>
@@ -18,15 +18,13 @@
                     cols="12"
                     sm="6"
                   >
-                    <!-- 空きの部分はv-modelを入れる予定です -->
                     <v-text-field
                       prepend-inner-icon="mdi-account"
                       placeholder="名前を入力してください"
                       clearable
                       type="name"
-
+                      v-model="formData.name"
                       label="name"
-                      class="registration-name"
                     >
                     </v-text-field>
                   </v-col>
@@ -39,10 +37,22 @@
                       placeholder="アカウント名を入力してください"
                       clearable
                       type="name"
+                      v-model="formData.accountname"
                       label="accountname"
-                      class="registration-name"
                     >
                     </v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                  >
+                    <v-select
+                      :items="age_list"
+                      id="age"
+                      label="Age"
+                      v-model="formData.age"
+                    > 
+                    </v-select>
                   </v-col>
                   <v-col
                     cols="12"
@@ -53,9 +63,8 @@
                       placeholder="設定するメールアドレスを入力してください"
                       clearable
                       type="email"
-
+                      v-model="formData.email"
                       label="email"
-                      class="registration-email"
                     >
                     </v-text-field>
                   </v-col>
@@ -70,9 +79,8 @@
                       :append-icon="show ? 'mdi-eye': 'mdi-eye-off'"
                       :type="show ? 'text': 'password'"
                       v-on:click:append="show =! show"
-                      
+                      v-model="formData.password"
                       label="password"
-                      class="registration-password"
                     >
                     </v-text-field>
                   </v-col>
@@ -100,7 +108,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 
@@ -111,26 +119,53 @@
   margin-top: 100px;
 }
 
-/* .registration-name {} */
-  
-/* .registration-email {} */
-
-/* .registration-password {} */
-
 .registration-formbtn {
   margin-top: 100px;
 }
 </style>
 
 <script>
+  import { getAuth, createUserWithEmailAndPassword, updateProfile  } from "firebase/auth";
+  import app from '../firebase';
+  
+
   export default {
     data: () => ({
 
-      dialog:true,
+      dialog: true,
 
       show: false,
 
-    })
+      age_list: ['10代','20代','30代','40代'],
+
+      formData: {
+        name: '',
+        accountname: '',
+        age: '',
+        email: '',
+        password: ''
+      },
+
+    }),
+    methods:{
+        registration() {
+          const auth = getAuth(app);
+          createUserWithEmailAndPassword(auth, this.formData.email, this.formData.password)
+          .then(() => {
+          // const user = userCredential.user;
+            updateProfile(auth.currentUser, {
+            displayName: this.formData.accountname
+            }).then((user) => {
+            console.log(user)
+            // ...
+            }).catch(() => {
+            // An error occurred
+            // ...
+            });
+          })
+          
+        }
+    }
   }
 
 </script>
