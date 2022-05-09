@@ -21,9 +21,8 @@
       >
         <v-list-item
           v-for="list in home_lists"
-          :key="list"
+          :key="list.name"
           :to="list.link"
-          v-on:click="dialog"
         >
           <v-list-item-icon>
             <v-icon> {{ list.icon }} </v-icon>
@@ -127,7 +126,7 @@ export default {
 
     flag: true,
 
-    dialog: true,
+    
 
     // リストの中身
     home_lists: [
