@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import HomePage from '/src/page/HomePage.vue'
 import Login from "/src/page/Login-m.vue"
 import PostCreate from "/src/page/PostCreate-m.vue"
 import Registration from "/src/page/Registration-m.vue"
@@ -10,6 +11,11 @@ Vue.use(VueRouter)
 
 const routes = [
 
+  {
+    path: '/',
+    name: 'HomePage',
+    component: HomePage
+  },
   {
     path: '/Login-m.vue',
     name: 'Login',
