@@ -100,6 +100,11 @@ export default {
         icon: 'mdi-file-document',
         link: '/PostCreate-m.vue'
       },
+      {
+        name: 'PostList',
+        icon: 'mdi-note-multiple',
+        link: '/PostList.vue'
+      },
       { 
         name: 'Registration',
         icon: 'mdi-account-plus',
