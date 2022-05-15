@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '/src/page/HomePage.vue'
 import Login from "/src/page/Login-m.vue"
 import PostCreate from "/src/page/PostCreate-m.vue"
+import PostList from "/src/page/PostList.vue"
 import Registration from "/src/page/Registration-m.vue"
 
 
@@ -24,6 +25,11 @@ const routes = [
     path: '/PostCreate-m.vue',
     name: 'PostCreate',
     component: PostCreate
+  },
+  {
+    path: '/PostList.vue',
+    name: 'PostList',
+    component: PostList
   },
   {
     path: '/Registration-m.vue',
