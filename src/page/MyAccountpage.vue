@@ -28,29 +28,26 @@
 						<v-icon large>mdi-close-circle</v-icon>
 					</v-btn>
 
-					<!-- アイコンアバター設置 実装検討中の為、保留 -->
 					<v-avatar
 						size="150"
 						color="primary"
 					>
-						<img :src="url">
+						<!-- <v-btn -->
+							<!-- text -->
+							<!-- icon -->
+							<!-- ref="file" -->
+							<!-- @change="onchange" -->
+						<!-- > -->
+							<v-icon size="100">mdi-plus</v-icon>
+						<!-- </v-btn> -->
 					</v-avatar>
-					<v-file-input
-						v-if="!image"
-						v-model="image"
-						accept="image/*"
-						show-size
-						dense
-						label="写真をアップしてください"
-					>
-					</v-file-input>
 				</v-badge>
 
-				<!-- 会員登録されたデータの一部をここに反映 -->
+				<!-- firebase実装の際編集する -->
 				<div class="mypage-text">
-					<h1>{{ userAccountName }}テスト</h1>
-					<p>{{ userName }}テスト</p>
-					<p>{{ userComment }}テスト</p>
+					<h1>テスト</h1>
+					<p>テスト</p>
+					<p>テスト</p>
 				</div>
 				<div>
 					<v-btn
@@ -67,7 +64,6 @@
 					>
 						自分の投稿ページへ→
 					</v-btn>
-					
 				</div>
 				</v-col>
 			</v-row>
@@ -84,27 +80,12 @@ export default {
 
 	data: () => ({
 
-		image: null,
-
-
 	}),
-	computed: {
-		// 現段階でのイベントチェック firebase接続後変更
-		url() {
-			if(this.image === null) {
-				return;
-			} else {
-				return URL.createObjectURL(this.image);
-			}
-		}
-	},
 	methods: {
-
-		onclear() {
-			return this.image = null;
-		}
+			// firebase実装の際に編集する
 	}
 }
+
 </script>
 
 <style scoped>
