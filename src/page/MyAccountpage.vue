@@ -59,7 +59,7 @@
 					</v-btn>
 					<v-btn
 						text
-						to="/PostLink.vue"
+						to="/PostList.vue"
 						class="mypage-btn"
 					>
 						自分の投稿ページへ→
