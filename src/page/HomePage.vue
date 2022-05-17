@@ -96,6 +96,11 @@ export default {
         link: '/Login-m.vue'
       },
       {
+        name: 'MyAccountpage',
+        icon: 'mdi-account-circle',
+        link: '/MyAccountpage.vue'
+      },
+      {
         name: 'PostCreate',
         icon: 'mdi-file-document',
         link: '/PostCreate-m.vue'
