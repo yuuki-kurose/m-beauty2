@@ -1,130 +1,89 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <v-row>
-          <v-col>
-            <v-dialog
-              v-model="dialog"
-              fullscreen
-            >
-              <v-card
-                img="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg&w=1920"
-              >
-                <v-card-title class="justify-center">
-                  会員登録
-                </v-card-title>
-                  <v-form class="registration-form">
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-text-field
-                        prepend-inner-icon="mdi-account"
-                        placeholder="名前を入力してください"
-                        clearable
-                        type="name"
-                        v-model="formData.name"
-                        label="name"
-                      >
-                      </v-text-field>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-text-field
-                        prepend-inner-icon="mdi-account-plus"
-                        placeholder="アカウント名を入力してください"
-                        clearable
-                        type="name"
-                        v-model="formData.accountname"
-                        label="accountname"
-                      >
-                      </v-text-field>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-select
-                        :items="age_list"
-                        id="age"
-                        label="Age"
-                        v-model="formData.age"
-                      > 
-                      </v-select>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-text-field
-                        prepend-inner-icon="mdi-email"
-                        placeholder="設定するメールアドレスを入力してください"
-                        clearable
-                        type="email"
-                        v-model="formData.email"
-                        label="email"
-                      >
-                      </v-text-field>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-text-field
-                        prepend-inner-icon="mdi-key"
-                        placeholder="設定するパスワードを入力してください"
-                        clearable
-                        :append-icon="show ? 'mdi-eye': 'mdi-eye-off'"
-                        :type="show ? 'text': 'password'"
-                        v-on:click:append="show =! show"
-                        v-model="formData.password"
-                        label="password"
-                      >
-                      </v-text-field>
-                    </v-col>
-                    <v-card-actions
-                      class="justify-center"
-                    >
-                      <v-btn
-                        text
-                        class="registration-formbtn"
-                        v-on:click="registration"
-                      >
-                        Register
-                      </v-btn>
-                      <v-btn
-                        text
-                        class="registration-formbtn"
-                        v-on:click="dialog = false"
-                      >
-                        Close
-                      </v-btn>
-                    </v-card-actions>
-                  </v-form>
-              </v-card>
-            </v-dialog>
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-col
+          cols="12"
+          sm="6"
+        > 
+          <v-card
+            width="500"
+            height="600"
+            elevation="8"
+          >
+
+            <v-card-title class="justify-center cyan lighten-2">
+              はじめよう！
+            </v-card-title>
+              <!-- ユーザー入力欄 -->
+              <v-form class="registration-form">
+                <v-text-field
+                  prepend-inner-icon="mdi-account"
+                  placeholder="名前を入力してください"
+                  clearable
+                  type="name"
+                  v-model="formData.name"
+                  label="name"
+                >
+                </v-text-field>
+                <v-text-field
+                  prepend-inner-icon="mdi-account-plus"
+                  placeholder="アカウント名を入力してください"
+                  clearable
+                  type="name"
+                  v-model="formData.accountname"
+                  label="accountname"
+                >
+                </v-text-field>
+                <v-select
+                  :items="age_list"
+                  id="age"
+                  label="Age"
+                  v-model="formData.age"
+                > 
+                </v-select>
+                <v-text-field
+                  prepend-inner-icon="mdi-email"
+                  placeholder="設定するメールアドレスを入力してください"
+                  clearable
+                  type="email"
+                  v-model="formData.email"
+                  label="email"
+                >
+                </v-text-field>
+                <v-text-field
+                  prepend-inner-icon="mdi-key"
+                  placeholder="設定するパスワードを入力してください"
+                  clearable
+                  :append-icon="show ? 'mdi-eye': 'mdi-eye-off'"
+                  :type="show ? 'text': 'password'"
+                  v-on:click:append="show =! show"
+                  v-model="formData.password"
+                  label="password"
+                >
+                </v-text-field>
+                <!-- ボタン -->
+                <v-card-actions class="justify-center">
+                  <v-btn
+                    text
+                    v-on:click="registration"
+                  >
+                    登録
+                  </v-btn>
+                  <v-btn
+                    text
+                    to="/"
+                  >
+                    Homeへ戻る
+                  </v-btn>
+                </v-card-actions>
+              </v-form>
+            </v-card>
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
   </v-app>
 </template>
-
-
-<style scoped>
-
-.registration-form {
-  margin-left: 700px;
-  margin-top: 100px;
-}
-
-.registration-formbtn {
-  margin-top: 100px;
-}
-</style>
 
 <script>
   import { getAuth, createUserWithEmailAndPassword, updateProfile  } from "firebase/auth";
@@ -132,9 +91,8 @@
   
 
   export default {
-    data: () => ({
 
-      dialog: true,
+    data: () => ({
 
       show: false,
 
@@ -169,5 +127,14 @@
         }
     }
   }
-
 </script>
+
+
+<style scoped>
+.registration-form {
+  margin: 50px 30px 30px 40px;
+}
+
+</style>
+
+
