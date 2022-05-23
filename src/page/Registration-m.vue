@@ -92,6 +92,9 @@
 
   export default {
 
+    name: 'RegistrationForm',
+    components:{},
+
     data: () => ({
 
       show: false,

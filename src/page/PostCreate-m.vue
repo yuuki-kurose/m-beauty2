@@ -53,6 +53,7 @@ import app from "../firebase";
 
 export default {
 
+  name: 'PostCreateForm',
   components: {},
 
   data: () => ({
