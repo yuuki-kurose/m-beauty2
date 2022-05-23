@@ -59,6 +59,7 @@
 
   export default {
 
+    name: 'LoginForm',
     components: {},
 
     data: () => ({
