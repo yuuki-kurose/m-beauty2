@@ -90,9 +90,9 @@
 </style>
 
 <script>
-import { doc, getDoc,set,ref,getFirestore } from "firebase/firestore";
+import { doc, getDoc,setDoc,getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-// simport { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import app from "../firebase";
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { defineComponent } from '@vue/composition-api'
@@ -173,12 +173,15 @@ export default {
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const db = getFirestore(app);
-          // const uuid = uuidv4()
-           set(ref(db, 'posts/' + 'test'), {
-          uid: this.userID,
-          url: downloadURL,
-          comment: this.formData.comment
-        });
+          const uuid = uuidv4()
+          const auth = getAuth();
+          const user = auth.currentUser;
+
+           setDoc(doc(db, 'posts',uuid), {
+            user: user.uid,
+            url: downloadURL,
+            comment: this.formData.comment
+          });
         });
         }
         );
