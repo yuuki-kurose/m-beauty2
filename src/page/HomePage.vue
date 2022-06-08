@@ -75,13 +75,26 @@
       I appreciate it very much. Photo by <a href="https://unsplash.com/@bialons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyTextUnsplash"> the Bialons,</a>
       <a href="https://unsplash.com/@sarahdorweiler">Sarah Dorweiler</a> on Unsplash
     </v-footer>
+    <LoginForm></LoginForm>
+    <PostCreateForm></PostCreateForm>
+    <RegistrationForm></RegistrationForm>
   </v-app>
 </template>
 
 <script>
 
+import LoginForm from './Login-m.vue'
+import PostCreateForm from './PostCreate-m.vue'
+import RegistrationForm from './Registration-m.vue'
+ 
 export default {
+  components: {
+    LoginForm,
+    PostCreateForm,
+    RegistrationForm
+  },
 
+  
 
   data:() => ({
     // ハンバーガーメニューの制御
@@ -93,12 +106,19 @@ export default {
       {
         name: 'Login',
         icon: 'mdi-account-check',
-        link: '/Login-m.vue'
+        link: '/Login-m.vue',
+        component: LoginForm
+      },
+      {
+        name: 'MyAccountpage',
+        icon: 'mdi-account-circle',
+        link: '/MyAccountpage.vue'
       },
       {
         name: 'PostCreate',
         icon: 'mdi-file-document',
-        link: '/PostCreate-m.vue'
+        link: '/PostCreate-m.vue',
+        component: PostCreateForm
       },
       {
         name: 'PostList',
@@ -108,13 +128,10 @@ export default {
       { 
         name: 'Registration',
         icon: 'mdi-account-plus',
-        link: '/Registration-m.vue'
+        link: '/Registration-m.vue',
+        component: RegistrationForm
       }
      ]
-
-    
-
-    
   })
 }
 </script>

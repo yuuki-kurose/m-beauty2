@@ -1,16 +1,22 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <v-row>
-          <v-col>
-            <v-dialog
-              fullscreen
-              v-model="dialog"
-            >
-              <v-card
-                img="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg&w=1920"
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-col
+          cols="12"
+          sm="6"
+        >
+          <v-card height="500"> 
+            <v-card-title class="justify-center cyan lighten-2">
+              投稿作成
+            </v-card-title>
+
+            <v-form class="postcreate-form">
+              <v-file-input
+                placeholder="写真を選択してください"
+                clearable
               >
+
                 <v-card-title class="justify-center">
                   投稿作成
                 </v-card-title>
@@ -43,51 +49,27 @@
                       v-model="formData.comment"
                     >
                     </v-textarea>
-                  </v-col>
-                  <v-card-actions
-                    class="justify-center"
-                  >
-                    <v-btn
-                      class="postcreate-formbtn"
-                      text
-                      type="submit"
-                    >
-                      Post
-                    </v-btn>
-                    <v-btn
-                      class="postcreate-formbtn"
-                      text
-                      v-on:click="dialog=false"
-                    >
-                      Close
-                    </v-btn>
-                  </v-card-actions>
-                </v-form>
-              </v-card>
-            </v-dialog>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
+                 <v-card-actions class="justify-center">
+                <v-btn
+                  text
+                  v-on:click="postCreate"
+                >
+                  Post
+                </v-btn>
+                <v-btn
+                  text
+                  to="/"
+                >
+                  Homeへ戻る
+                </v-btn>
+              </v-card-actions>
+            </v-form>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-app>
 </template>
-
-<style scoped>
-
-  .postcreate-form {
-    margin-top: 100px;
-    margin-left: 700px;
-  }
-
-  /* .postcreate-title {} */
-   
-  /* .postcreate-contents {}*/
-
-  .postcreate-formbtn {
-    margin-top: 100px;
-  }
-
-</style>
 
 <script>
 import { doc, getDoc,setDoc,getFirestore } from "firebase/firestore";
@@ -97,8 +79,6 @@ import app from "../firebase";
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { defineComponent } from '@vue/composition-api'
 
-
-
 export default {
 
 
@@ -107,13 +87,14 @@ export default {
 
   data: () => ({
 
-    dialog: true,
+
     userID: '',
 
     formData:{
       url:'',
       comment:''
     }
+
 
   }),
   mounted() {
@@ -190,3 +171,9 @@ export default {
     }
   
 </script>
+
+<style scoped>
+.postcreate-form {
+  margin: 40px 30px 30px 40px;
+}
+</style>
