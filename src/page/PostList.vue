@@ -27,12 +27,12 @@
           >
             <v-card elevation="8">
 							<v-img
-								:src="post.src"
+								:src="post.url"
 								class="white--text align-end"
 								height="300px"
 							>
 								<v-card-title v-text="post.title"></v-card-title>
-								<v-card-text v-text="post.text"></v-card-text>
+								<v-card-text v-text="post.comment"></v-card-text>
 							</v-img>
 							<!-- いいねボタン実装 -->
 							<v-card-actions>
@@ -54,28 +54,36 @@
 </template>
 
 <script>
+import { collection, getDocs,getFirestore } from "firebase/firestore";
+import app from "../firebase";
+
 export default {
-	// PostCreate-m.vueで投稿された情報をやり取りする
-	props: ['postsTitle','postsText','postsSrc'],
 	
 
 	data: () => ({
 
 		count: 0,
 
-		posts: [
-			{
-				title:'',
-				text: '',
-				src: '',
-			}
-		],
+		posts: [],
+
 	}),
 	methods: {
 		oncount() {
 			return this.count ++;
 		},
+	},
+	created: async function(){
+		const db = getFirestore(app);
+		const querySnapshot = await getDocs(collection(db, "posts"));
+		querySnapshot.forEach((doc) => {
+		// doc.data() is never undefined for query doc snapshots
+		console.log(doc.id, " => ", doc.data());
+		this.posts.push(doc.data());
+		console.log(this.posts);
+		});
 	}
+
+	
 }
 </script>
 

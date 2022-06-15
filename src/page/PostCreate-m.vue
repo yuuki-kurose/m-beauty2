@@ -15,7 +15,8 @@
               <v-file-input
                 placeholder="写真を選択してください"
                 clearable
-              >
+              />
+              
 
                 <v-card-title class="justify-center">
                   投稿作成
@@ -49,7 +50,9 @@
                       v-model="formData.comment"
                     >
                     </v-textarea>
-                 <v-card-actions class="justify-center">
+                  </v-col>
+                </v-form>
+                <v-card-actions class="justify-center">
                 <v-btn
                   text
                   v-on:click="postCreate"
